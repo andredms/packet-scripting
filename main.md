@@ -4,7 +4,7 @@
 
 Command line Wireshark.
 
-### Example (Basics)
+## Example (Basics)
 
 ```
 tshark -r ‘capture-1.pcap’ -T fields -e data -Y ‘ip.src == 192.168.50.1’ 
@@ -49,7 +49,7 @@ If you want to save data from tshark output simply redirect it:
 tshark -r ‘capture.pcap’ -T fields -e data -Y ‘ip.src == 192.168.50.1’ | tr -d “\n” | xxd -p -r > output.txt
 ```
 
-### Example (DNS Exfilitration)
+## Example (DNS Exfilitration)
 
 ```
 tshark -r capture-2.pcap -T fields -e dns.qry.name -Y 'dns.qry.name contains ".ixd.co" && dns.flags == 0x8183' | cut -d . -f 1 | tr -d '\n'
