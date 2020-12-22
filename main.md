@@ -4,11 +4,11 @@
 
 Command line Wireshark.
 
-### Example
+### Example (Basics)
 
-```tshark -r ‘capture.pcap’ -T fields -e ‘ip.src == 192.168.50.1’ ```
+```tshark -r ‘capture-1.pcap’ -T fields -e data -Y ‘ip.src == 192.168.50.1’ ```
 
-Prints out all packet fields with the filter ``ip.src == 192.168.50.1`` applied.
+Prints out all payloads of the packets that come from 192.168.50.1.
 
 ### Flags
 >-r: read a .pcap file.
@@ -17,17 +17,20 @@ Prints out all packet fields with the filter ``ip.src == 192.168.50.1`` applied.
 >-T: sets output format (e.g. fields)
 
 
->-e: specify filters (e.g. -e ‘ip.src == 192.168.50.1’)
+>-e: specify what field to extract (e.g. -e ‘data')
+
+
+>-Y: specify display filter
 
 Often, you’ll need to add some extra formatting via piping in ``tr``, ``awk`` or ``xxd`` commands. If you want to get one continuous stream of characters with TShark newline characters will need to be deleted:
 
-```tshark -r ‘capture.pcap’ -T fields -e ‘ip.src == 192.168.50.1’ | tr -d “\n”```
+```tshark -r ‘capture-1.pcap’ -T fields -e data -Y ‘ip.src == 192.168.50.1’ | tr -d “\n”```
 
 ``tr`` stands for ‘text replace’, the ``-d`` flag deletes the character in the next argument (e.g. ‘\n’)
 
 xxd is also useful for manipulating hex output and format. 
 
-```tshark -r ‘capture.pcap’ -T fields -e ‘ip.src == 192.168.50.1’ | tr -d “\n” | xxd -p -r```
+```tshark -r ‘capture-1.pcap’ -T fields -e data -Y ‘ip.src == 192.168.50.1’ | tr -d “\n” | xxd -p -r```
 
 >-p removes the line numbers and ASCII decoded hex (super useful!!!) 
 
@@ -36,7 +39,15 @@ xxd is also useful for manipulating hex output and format.
 
 If you want to save data from tshark output simply redirect it:
 
-```tshark -r ‘capture.pcap’ -T fields -e ‘ip.src == 192.168.50.1’ | tr -d “\n” | xxd -p -r > output.txt```
+```tshark -r ‘capture.pcap’ -T fields -e data -Y ‘ip.src == 192.168.50.1’ | tr -d “\n” | xxd -p -r > output.txt```
+
+### Example (DNS)
+
+```
+tshark -r capture-2.pcap -Y 'dns.qry.name contains ".ixd.co" && dns.flags == 0x8183' -T fields -e dns.qry.name | cut -d. -f1 | tr -d '\n'
+```
+
+
 
 
 # PyShark
