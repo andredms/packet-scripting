@@ -7,7 +7,7 @@ Command line Wireshark.
 ## Example (Basics)
 
 ```
-tshark -r ‘capture-1.pcap’ -T fields -e data -Y ‘ip.src == 192.168.50.1’ 
+tshark -r 'capture-1.pcap' -T fields -e data -Y 'ip.src == 192.168.50.1'
 ```
 
 Prints out all payloads of the packets that come from 192.168.50.1.
@@ -27,7 +27,7 @@ Prints out all payloads of the packets that come from 192.168.50.1.
 Often, you’ll need to add some extra formatting via piping in ``tr``, ``awk`` or ``xxd`` commands. If you want to get one continuous stream of characters with TShark newline characters will need to be deleted:
 
 ```
-tshark -r ‘capture-1.pcap’ -T fields -e data -Y ‘ip.src == 192.168.50.1’ | tr -d “\n”
+tshark -r 'capture-1.pcap' -T fields -e data -Y 'ip.src == 192.168.50.1' | tr -d "\n"
 ```
 
 ``tr`` stands for ‘text replace’, the ``-d`` flag deletes the character in the next argument (e.g. ‘\n’)
@@ -35,7 +35,7 @@ tshark -r ‘capture-1.pcap’ -T fields -e data -Y ‘ip.src == 192.168.50.1’
 xxd is also useful for manipulating hex output and format. 
 
 ```
-tshark -r ‘capture-1.pcap’ -T fields -e data -Y ‘ip.src == 192.168.50.1’ | tr -d “\n” | xxd -p -r
+tshark -r 'capture-1.pcap' -T fields -e data -Y 'ip.src == 192.168.50.1' | tr -d "\n" | xxd -p -r
 ```
 
 >-p removes the line numbers and ASCII decoded hex (super useful!!!) 
@@ -46,7 +46,7 @@ tshark -r ‘capture-1.pcap’ -T fields -e data -Y ‘ip.src == 192.168.50.1’
 If you want to save data from tshark output simply redirect it:
 
 ```
-tshark -r ‘capture.pcap’ -T fields -e data -Y ‘ip.src == 192.168.50.1’ | tr -d “\n” | xxd -p -r > output.txt
+tshark -r 'capture.pcap' -T fields -e data -Y 'ip.src == 192.168.50.1' | tr -d "\n" | xxd -p -r > output.txt
 ```
 
 ## Example (DNS Exfilitration)
