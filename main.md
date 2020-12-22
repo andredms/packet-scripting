@@ -4,7 +4,11 @@
 
 ### Flags
 >-r: read a .pcap file.
+
+
 >-T: sets output format (e.g. fields)
+
+
 >-e: specify filters (e.g. -e ‘ip.src == 192.168.50.1’)
 
 Often, you’ll need to add some extra formatting via piping in tr, awk or xxd commands. If you want to get one continuous stream of characters with TShark newline characters will need to be deleted:
