@@ -30,7 +30,7 @@ Often, you’ll need to add some extra formatting via piping in ``tr``, ``awk``,
 tshark -r 'capture-1.pcap' -T fields -e data -Y 'ip.src == 192.168.50.1' | tr -d "\n"
 ```
 
-``tr`` stands for ‘text replace’, the ``-d`` flag deletes the character in the next argument (e.g. ‘\n’)
+``tr`` stands for ‘text replace’, the ``-d`` flag deletes the character in the next argument (e.g. '\n')
 
 xxd is also useful for manipulating hex output and format. 
 
