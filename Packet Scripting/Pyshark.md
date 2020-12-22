@@ -5,11 +5,9 @@ _(import pyshark)_
 - TShark, but for Python (acts as a wrapper)
 
 Reading .pcap file:
-```
-cap = pyshark.FileCapture(
+`cap = pyshark.FileCapture(
 		“capture.pcap”
-		display_filter=[wireshark filter])
-```
+		display_filter=[wireshark filter])`
 
 #### Wireshark filters
 Regular wireshark filters can be used in `display_filter`, e.g. `tcp.stream eq %d', %i.` This will iterate over all TCP streams when used in a for loop in conjunction with p = cap.next. 
@@ -22,19 +20,21 @@ while True
 p = cap.next
 except StopIteration:
 	break;
-```
 
 Extracting:
-```
 output = open('output.txt', 'wb')
+
+```
+....
+```
 try:
 	output.write(p.data.data.binary_value)
 	except AttributeError:
 		pass
-```
 
 Keywords:
 	*.binary_value: converts hex to ASCII character
 	.data:
 	.data.data:
+```
 
