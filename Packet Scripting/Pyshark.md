@@ -1,7 +1,7 @@
 # PyShark
 _(import pyshark)_
 
-#### _Purpose: _
+#### Purpose:
 - TShark, but for Python (acts as a wrapper)
 
 Reading .pcap file:
