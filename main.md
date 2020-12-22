@@ -25,11 +25,11 @@ Often, you’ll need to add some extra formatting via piping in ``tr``, ``awk`` 
 
 ``tr`` stands for ‘text replace’, the ``-d`` flag deletes the character in the next argument (e.g. ‘\n’)
 
-If you want to save data from tshark output simply redirect it:
-
-```tshark -r ‘capture.pcap’ -T fields -e ‘ip.src== 192.168.50.1’ | tr -d “\n” > output.txt```
-
 xxd is also useful for manipulating hex output and format. 
+
+```tshark -r ‘capture.pcap’ -T fields -e ‘ip.src== 192.168.50.1’ | tr -d “\n” | xxd -p -r```
+
+If you want to save data from tshark output simply redirect it:
 
 ```tshark -r ‘capture.pcap’ -T fields -e ‘ip.src== 192.168.50.1’ | tr -d “\n” | xxd -p -r > output.txt```
 
