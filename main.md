@@ -16,7 +16,7 @@ Prints out all payloads of the packets that come from 192.168.50.1.
 >-r: read a .pcap file.
 
 
->-T: sets output format (e.g. fields)
+>-T: set output format (e.g. fields)
 
 
 >-e: specify field to extract (e.g. -e ‘data')
