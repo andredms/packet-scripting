@@ -55,9 +55,13 @@ tshark -r 'capture-1.pcap' -T fields -e data -Y 'ip.src == 192.168.50.1' | tr -d
 tshark -r 'capture-2.pcap' -T fields -e dns.qry.name -Y 'dns.qry.name contains "apache"' | cut -d. -f1 | tr -d '\n'
 ```
 
-Prints out all DNS query names if they contain ``apache``. The ``cut`` command the sets the delimiter to '.' via ``-d .`` and ``-f 1`` makes it so only the first element before the first '.' is printed out, in this case, it'd print out subdomains (e.g. lists.apache and bugs.apache).
+Prints out all DNS query names if they contain ``apache``. The ``cut`` command the sets the delimiter to '.' via ``-d .`` and ``-f 1`` makes it so only the first element before the first '.' is printed out, in this case, it'd print out subdomains (e.g. **lists.apache** and **bugs.apache**).
 
 ![image](https://i.imgur.com/bLDim6v.png)
+
+If we were to change this to ``-f 2`` we'd get a different result:
+
+![image](https://i.imgur.com/BvLz63M.png)
 
 # PyShark
 
