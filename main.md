@@ -26,6 +26,8 @@ xxd is also useful for manipulating hex output and format.
 ```tshark -r ‘capture.pcap’ -T fields -e ‘ip.src== 192.168.50.1’ | tr -d “\n” | xxd -p -r > output.txt```
 
 >-p removes the line numbers and ASCII decoded hex (super useful!!!) 
+
+
 >-r turns the hex data into binary (‘reverse’)
 
 
