@@ -46,19 +46,16 @@ tshark -r 'capture-1.pcap' -T fields -e data -Y 'ip.src == 192.168.50.1' | tr -d
 If you want to save data from tshark output simply redirect it:
 
 ```
-tshark -r 'capture.pcap' -T fields -e data -Y 'ip.src == 192.168.50.1' | tr -d "\n" | xxd -p -r > output.txt
+tshark -r 'capture-1.pcap' -T fields -e data -Y 'ip.src == 192.168.50.1' | tr -d "\n" | xxd -p -r > output.txt
 ```
 
-## Example (DNS Exfilitration)
+## Example (DNS)
 
 ```
-tshark -r capture-2.pcap -T fields -e dns.qry.name -Y 'dns.qry.name contains ".ixd.co" && dns.flags == 0x8183' | cut -d . -f 1 | tr -d '\n'
+tshark -r 'capture-2.pcap' -T fields -e dns.qry.name -Y 'dns.qry.name contains "apache"' | cut -d. -f1 | tr -d "\n"
 ```
 
-Prints out all DNS query names if they contain ``.ixd.co`` and ``0x8183``. The ``cut`` command the sets the delimiter to '.' via ``-d .`` and ``-f 1`` makes it so only the first element before the '.' is printed out. 
-
-
-Prints out 
+Prints out all DNS query names if they contain ``apache``. The ``cut`` command the sets the delimiter to '.' via ``-d .`` and ``-f 1`` makes it so only the first element before the '.' is printed out, in this case, it'd print out subdomains (e.g. lists.apache and bugs.apache).
 
 # PyShark
 
