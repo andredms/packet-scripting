@@ -6,7 +6,7 @@
 
 ```tshark -r ‘capture.pcap’ -T fields -e ‘ip.src == 192.168.50.1’ ```
 
-Prints out all packet fields with the filter ``ip.src == 192.168.50.1``. 
+Prints out all packet fields with the filter ``ip.src == 192.168.50.1`` applied.
 
 ### Flags
 >-r: read a .pcap file.
