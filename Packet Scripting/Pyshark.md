@@ -20,21 +20,21 @@ while True
 p = cap.next
 except StopIteration:
 	break;
-
+```
 Extracting:
+
+```
 output = open('output.txt', 'wb')
 
-```
-....
-```
+...
+
 try:
 	output.write(p.data.data.binary_value)
 	except AttributeError:
 		pass
-
+```
 Keywords:
 	*.binary_value: converts hex to ASCII character
 	.data:
 	.data.data:
-```
 
