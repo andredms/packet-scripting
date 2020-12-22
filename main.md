@@ -13,7 +13,7 @@ tshark -r 'capture-1.pcap' -T fields -e data -Y 'ip.src == 192.168.50.1'
 Prints out all payloads of the packets that come from 192.168.50.1.
 
 ### Flags
->-r: read a .pcap file.
+>-r: read a .pcap file
 
 
 >-T: set output format (e.g. fields)
