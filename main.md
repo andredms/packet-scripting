@@ -17,7 +17,7 @@ Prints out all packet fields with the filter ``ip.src == 192.168.50.1`` applied.
 
 >-e: specify filters (e.g. -e ‘ip.src == 192.168.50.1’)
 
-Often, you’ll need to add some extra formatting via piping in tr, awk or xxd commands. If you want to get one continuous stream of characters with TShark newline characters will need to be deleted:
+Often, you’ll need to add some extra formatting via piping in ``tr``, ``awk`` or ``xxd`` commands. If you want to get one continuous stream of characters with TShark newline characters will need to be deleted:
 
 ```tshark -r ‘capture.pcap’ -T fields -e ‘ip.src== 192.168.50.1’ | tr -d “\n”```
 
