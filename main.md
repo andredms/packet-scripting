@@ -21,7 +21,7 @@ Often, you’ll need to add some extra formatting via piping in ``tr``, ``awk`` 
 
 ```tshark -r ‘capture.pcap’ -T fields -e ‘ip.src== 192.168.50.1’ | tr -d “\n”```
 
-tr stands for ‘text replace’, the -d flag deletes the character in the next argument (e.g. ‘\n’)
+``tr`` stands for ‘text replace’, the ``-d`` flag deletes the character in the next argument (e.g. ‘\n’)
 
 If you want to save data from tshark output simply redirect it:
 
