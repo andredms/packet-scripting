@@ -57,6 +57,8 @@ tshark -r 'capture-2.pcap' -T fields -e dns.qry.name -Y 'dns.qry.name contains "
 
 Prints out all DNS query names if they contain ``apache``. The ``cut`` command the sets the delimiter to '.' via ``-d .`` and ``-f 1`` makes it so only the first element before the first '.' is printed out, in this case, it'd print out subdomains (e.g. lists.apache and bugs.apache).
 
+![image](https://i.imgur.com/bLDim6v.png)
+
 # PyShark
 
 # Scapy
